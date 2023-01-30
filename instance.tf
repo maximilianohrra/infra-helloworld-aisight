@@ -1,3 +1,5 @@
+#AWS EC2 instance with security group and key pair attached.
+
 resource "aws_instance" "instancia-2" {
   ami           = var.aws_ami
   instance_type = var.aws_instance_type

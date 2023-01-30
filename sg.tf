@@ -1,3 +1,4 @@
+# AWS security group allowing inbound SSH and all outbound traffic.
 resource "aws_security_group" "helloworld_sg" {
   name        = "http allow traffic"
   description = "Allow the HTTP traffic"

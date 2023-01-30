@@ -1,20 +1,22 @@
+# An example, Create user 'max':
+# Template creates a new user "max", adds public ssh key, and grants root-level privileges to "max" in the sudo group.
 ---
-- hosts: "{{ host }}"
+- hosts: local
   become: yes
   become_user: root
   tasks:
-  - name: Crear el usuario max
+  - name: Create user 'max'
     user:
       name: max
       state: present
       groups: sudo
       append: yes
-  - name: Agregar la llave ssh al usuario max
+  - name: Add SSH key to 'max'
     authorized_key:
       user: max
       key: "{{ lookup('file', '/home/maxi/Downloads/clave_aws.pub') }}"
       state: present
-  - name: Asignar permisos de root al usuario max
+  - name: Give root permissions to 'max'
     lineinfile:
       dest: /etc/sudoers
       regexp: '^%sudo'

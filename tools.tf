@@ -1,3 +1,6 @@
+#
+#   Install Docker, Docker Compose, Nginx, Ansible on EC2 instance.
+######################
 resource "null_resource" "install_docker" {
 provisioner "remote-exec" {
 inline = [
