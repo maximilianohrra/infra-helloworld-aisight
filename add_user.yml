@@ -14,7 +14,7 @@
   - name: Add SSH key to 'max'
     authorized_key:
       user: max
-      key: "{{ lookup('file', '/home/maxi/Downloads/clave_aws.pub') }}"
+      key: "{{ lookup('file', '~/.ssh/clave_aws.pub') }}"
       state: present
   - name: Give root permissions to 'max'
     lineinfile:
