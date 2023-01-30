@@ -1,0 +1,21 @@
+---
+- hosts: "{{ host }}"
+  become: yes
+  become_user: root
+  tasks:
+  - name: Crear el usuario max
+    user:
+      name: max
+      state: present
+      groups: sudo
+      append: yes
+  - name: Agregar la llave ssh al usuario max
+    authorized_key:
+      user: max
+      key: "{{ lookup('file', '/home/maxi/Downloads/clave_aws.pub') }}"
+      state: present
+  - name: Asignar permisos de root al usuario max
+    lineinfile:
+      dest: /etc/sudoers
+      regexp: '^%sudo'
+      line: '%max ALL=(ALL) NOPASSWD: ALL'
